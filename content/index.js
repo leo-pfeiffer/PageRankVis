@@ -122,7 +122,7 @@ window.onload = () => {
         location.reload();
     });
 
-    // handler for clicks on remove butotn
+    // handler for clicks on remove button
     removeBtn.click(() => {
         deleteSelected();
     })
@@ -137,7 +137,29 @@ window.onload = () => {
 
     // handler for clicks on the rank button
     rankBtn.click(() => {
-        // todo
+        const nodes = cy.nodes().toArray().map(el => parseInt(el.id()));
+        const edges = cy.edges().toArray().map(el => [parseInt(el.data().source), parseInt(el.data().target)]);
+
+        fetch('/api/rank/', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                edges: edges,
+                nodes: nodes
+            })
+        }).then((res) => {
+            if (!res.ok) {
+                throw new Error('Error' + res.status + res.statusText);
+            }
+            else {
+                return res.json();
+            }
+        }).then(jsn => {
+            console.log(jsn)
+        })
+
         console.log('call pagerank')
     })
 
