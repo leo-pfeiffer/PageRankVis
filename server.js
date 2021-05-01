@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const PageRank = require('js-pagerank');
 
 const app = express();
 app.use(bodyParser.json());
@@ -10,6 +11,11 @@ const PORT = process.env.PORT || 8080
 app.post('/api/rank/', (req, res) => {
     const edges = req.body.edges;
     const nodes = req.body.nodes;
+
+    if (nodes.length === 0) {
+        res.status(400).send({msg: 'nodes array cannot be empty.'});
+        return;
+    }
 
     // sort by source node
     edges.sort((a, b) => a[0] - b[0], 0)
@@ -42,8 +48,9 @@ app.post('/api/rank/', (req, res) => {
         .map(arr => arr[1])
 
     // create pageRank instance
-    // todo
-    const result = adjacencyList
+    let pageRank = PageRank.fromAdjacencyList(adjacencyList);
+    pageRank.iterate(nameMap)
+    const result = pageRank.result;
 
     res.status(200).send({result: result})
 

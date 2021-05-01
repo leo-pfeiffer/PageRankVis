@@ -14,7 +14,9 @@ window.onload = () => {
                     'background-color': 'green',
                     'border-color': 'white',
                     'border-width': '2',
-                    'label': 'data(id)'
+                    'label': 'data(id)',
+                    'width': 'data(width)',
+                    'height': 'data(height)'
                 }
             },
             {
@@ -57,6 +59,9 @@ window.onload = () => {
     // initially, reset selected node to null
     cy.selectedNode = null;
 
+    // save the result of the ranking returned from the API
+    let ranking = null;
+
     /**
      * Delete the currently selected elements of the cytoscape.
      * */
@@ -66,6 +71,16 @@ window.onload = () => {
         selectedElements.remove();
         cy.selectedNode = null;
         cy.elements().removeClass('opaque');
+    }
+
+    const updateRanking = function() {
+        if (ranking === null) {
+            return;
+        }
+        cy.nodes().forEach((node) => {
+            node.data('height', ranking.mappedResult[node.id()] * 100);
+            node.data('width', ranking.mappedResult[node.id()] * 100);
+        });
     }
 
     // Get the buttons
@@ -78,7 +93,7 @@ window.onload = () => {
     addNodeBtn.click(() => {
         cy.add({
             group: "nodes",
-            data: { id: '' + lastAdded, name: 'Node '+ lastAdded },
+            data: {id: '' + lastAdded, name: 'Node '+ lastAdded, height: 25, width: 25},
             position: { x: (100 + lastAdded * 90 % 400), y: 100 }
         });
         lastAdded++;
@@ -140,6 +155,10 @@ window.onload = () => {
         const nodes = cy.nodes().toArray().map(el => parseInt(el.id()));
         const edges = cy.edges().toArray().map(el => [parseInt(el.data().source), parseInt(el.data().target)]);
 
+        if (nodes.length === 0) {
+            return;
+        }
+
         fetch('/api/rank/', {
             method: 'POST',
             headers: {
@@ -151,16 +170,15 @@ window.onload = () => {
             })
         }).then((res) => {
             if (!res.ok) {
-                throw new Error('Error' + res.status + res.statusText);
+                throw new Error(res.status + ' ' + res.statusText);
             }
             else {
                 return res.json();
             }
         }).then(jsn => {
             console.log(jsn)
-        })
-
-        console.log('call pagerank')
+            ranking = jsn.result;
+            updateRanking();
+        }).catch(err => console.log(err))
     })
-
 }
