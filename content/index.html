@@ -5,21 +5,29 @@
     <title>PageRank Vis</title>
     <link rel="shortcut icon" type="image/ico" href="favicon.ico"/>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 
 </head>
 <body>
     <header>
         <div class="hero">
-            <div class="nav-toggle">
-                <span>PageRank Vis</span>
-            </div>
             <nav>
                 <ul>
                     <li>
-                        <a href="https://github.com/leo-pfeiffer/pagerankvis">View on Github</a>
+                        <h2>PageRank Vis</h2>
                     </li>
                     <li>
+                        <span>
+                        <a href="https://github.com/leo-pfeiffer/pagerankvis"><i class="fab fa-github"></i></a>
+                        &nbsp;|&nbsp;
                         <a href="https://leopold.page">About the author</a>
+                        </span>
+                    </li>
+                    <hr>
+                    <li>
+                        <p>"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
+
+                        </p>
                     </li>
                 </ul>
             </nav>
@@ -34,9 +42,4 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.2/cytoscape.min.js"></script>
 <script type="text/javascript" src="index.js"></script>
 
-<script type="text/javascript">
-    $('.nav-toggle').on('click', function(){
-        $('nav').fadeToggle(200);
-    })
-</script>
 </html>

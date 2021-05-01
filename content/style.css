@@ -15,19 +15,10 @@ html, body {
     top: 0;
     bottom: 0;
     width: 15em;
-    border-left: 1px solid #ddd;
+    border-left: 1px solid #000000;
     z-index: 2;
     overflow: auto;
-    background: linear-gradient(0.5turn, #000000, #ffffff) center 30%;
-}
-.hero .nav-toggle {
-    color: #ffffff;
-    font-family: "Garamond", serif;
-    position: absolute;
-    top: 25px;
-    right: 25px;
-    cursor: pointer;
-    z-index: 3;
+    background: #ffffff;
 }
 
 .hero nav {
@@ -36,14 +27,13 @@ html, body {
     left: 0;
     height: 100%;
     width: 100%;
-    padding-top: 60px;
+    color: #000000;
     font-family: "Garamond", serif;
     font-size: 1em;
-    display: none;
-    background: rgba(0, 0, 0, 0.8);
+    display: block;
 }
 .hero nav ul {
-    margin: 0 0 0 25px;
+    margin: 0 25px 0 25px;
     padding: 0;
 }
 .hero nav li {
@@ -53,7 +43,7 @@ html, body {
 }
 .hero nav a {
     text-decoration: none;
-    color: #fff;
+    color: #000000;
 }
 
 .content {
@@ -72,7 +62,8 @@ html, body {
     .hero {
         height: 15em;
         width: 100%;
-        background: linear-gradient(0.5turn, #000000, #7e7e7e) center 30%;
+        border-left: none;
+        border-bottom: 1px solid #000000;
     }
 
     .content {
