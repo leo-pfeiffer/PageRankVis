@@ -19,10 +19,10 @@ body {
     height: 100%;
     position: fixed;
     background-size: cover;
-    background: linear-gradient(0.5turn, #3f87a6, #ebf8e1, #f69d3c) center 30%;
+    background: linear-gradient(0.5turn, #000000, #ffffff) center 30%;
 }
 .hero .nav-toggle {
-    color: white;
+    color: #ffffff;
     font-family: "Garamond", serif;
     position: absolute;
     top: 25px;
@@ -63,6 +63,7 @@ body {
     margin-left: 30%;
     padding: 25px 1em;
     overflow: hidden;
+    background: linear-gradient(0.5turn, #e9e9e9, #ffffff) center 30%;
 }
 
 @media (max-width: 768px) {
