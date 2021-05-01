@@ -1,0 +1,86 @@
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 21px;
+    font-family: "Garamond", serif;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+.hero {
+    width: 30%;
+    height: 100%;
+    position: fixed;
+    background-size: cover;
+    background: linear-gradient(0.5turn, #3f87a6, #ebf8e1, #f69d3c) center 30%;
+}
+.hero .nav-toggle {
+    color: white;
+    font-family: "Garamond", serif;
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.hero nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    padding-top: 60px;
+    font-family: "Garamond", serif;
+    font-size: 1em;
+    display: none;
+    background: rgba(0, 0, 0, 0.8);
+}
+.hero nav ul {
+    margin: 0 0 0 25px;
+    padding: 0;
+}
+.hero nav li {
+    list-style-type: none;
+    margin: 25px 0;
+    position: relative;
+}
+.hero nav a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.content {
+    width: 70%;
+    min-height: 100%;
+    margin-left: 30%;
+    padding: 25px 1em;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 18px;
+    }
+
+    .hero {
+        height: 175px;
+        width: 100%;
+        display: block;
+        position: relative;
+        padding: 1px;
+    }
+
+    .content {
+        margin-left: 0;
+        padding-top: 0;
+        width: 100%;
+    }
+}
