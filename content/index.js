@@ -128,7 +128,6 @@ window.onload = () => {
         cy.add({
             group: "nodes",
             data: {id: '' + lastAdded, name: ''+ lastAdded, height: 25, width: 25},
-            position: { x: (100 + lastAdded * 90 % 400), y: 100 }
         });
         await runLayout();
         lastAdded++;
