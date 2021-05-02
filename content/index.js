@@ -12,9 +12,13 @@ window.onload = () => {
                 selector: 'node',
                 style: {
                     'background-color': '#1A536A',
-                    'border-color': '#3DCA7B',
-                    'border-width': '2',
-                    'label': 'data(id)',
+                    'label': 'data(name)',
+                    'color': '#fff',
+                    'text-outline-color': '#1A536A',
+                    'text-outline-width': '2',
+                    'font-size': '8',
+                    'text-valign': 'center',
+                    'text-halign': 'center',
                     'width': 'data(width)',
                     'height': 'data(height)'
                 }
@@ -48,7 +52,7 @@ window.onload = () => {
 
         layout: {
             name: 'avsdf',
-            nodeSeparation: 120
+            nodeSeparation: 120,
         },
 
     });
@@ -79,10 +83,30 @@ window.onload = () => {
         if (ranking === null) {
             return;
         }
-        cy.nodes().forEach((node) => {
-            node.data('height', ranking.mappedResult[node.id()] * 100);
-            node.data('width', ranking.mappedResult[node.id()] * 100);
+        cy.nodes().forEach(async (node) => {
+            const id = node.id()
+            const rank = ranking.mappedResult[id]
+            const ani = node.animation({
+                style: {
+                    'height': rank * 100,
+                    'width': rank * 100,
+                },
+                duration: 1000
+            })
+            await ani.play();
+            node.data('name', `${id}: ${rank.toFixed(2)}`);
         });
+    }
+
+    const runLayout = function() {
+        layout = cy.layout({
+            name: 'avsdf',
+            animate: "end",
+            animationDuration: 500,
+            animationEasing: 'ease-in-out',
+            nodeSeparation: 180
+        });
+        layout.run();
     }
 
     // Get the buttons
@@ -93,12 +117,13 @@ window.onload = () => {
     const layoutBtn = $('#layout-btn')
 
     // add a new node upon click
-    addNodeBtn.click(() => {
+    addNodeBtn.click(async () => {
         cy.add({
             group: "nodes",
-            data: {id: '' + lastAdded, name: 'Node '+ lastAdded, height: 25, width: 25},
+            data: {id: '' + lastAdded, name: ''+ lastAdded, height: 25, width: 25},
             position: { x: (100 + lastAdded * 90 % 400), y: 100 }
         });
+        await runLayout();
         lastAdded++;
     })
 
@@ -145,15 +170,8 @@ window.onload = () => {
         deleteSelected();
     })
 
-    layoutBtn.click(() => {
-        layout = cy.layout({
-            name: 'avsdf',
-            animate: "end",
-            animationDuration: 500,
-            animationEasing: 'ease-in-out',
-            nodeSeparation: 180
-        });
-        layout.run();
+    layoutBtn.click(async () => {
+        await runLayout();
     })
 
     // handler for keyup events on delete and backspace
@@ -190,7 +208,6 @@ window.onload = () => {
                 return res.json();
             }
         }).then(jsn => {
-            console.log(jsn)
             ranking = jsn.result;
             updateRanking();
         }).catch(err => console.log(err))

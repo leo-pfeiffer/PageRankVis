@@ -3,11 +3,6 @@ html {
     font-family: "Garamond", serif;
 }
 
-body {
-    min-width:1000px;
-    width: auto !important;
-}
-
 html, body {
     height: 100%;
 }
@@ -92,7 +87,6 @@ html, body {
     }
 
     .content {
-        left: 0;
         top: 50px;
         right: 0;
     }
