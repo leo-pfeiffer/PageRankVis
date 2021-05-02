@@ -48,8 +48,9 @@ window.onload = () => {
         ],
 
         layout: {
-            name: 'circle',
-        }
+            name: 'avsdf',
+            nodeSeparation: 120
+        },
 
     });
 
@@ -61,6 +62,8 @@ window.onload = () => {
 
     // save the result of the ranking returned from the API
     let ranking = null;
+
+    let layout;
 
     /**
      * Delete the currently selected elements of the cytoscape.
@@ -88,6 +91,7 @@ window.onload = () => {
     const removeBtn = $('#remove-btn')
     const destroyBtn = $('#destroy-btn')
     const rankBtn = $('#rank-btn')
+    const layoutBtn = $('#layout-btn')
 
     // add a new node upon click
     addNodeBtn.click(() => {
@@ -140,6 +144,17 @@ window.onload = () => {
     // handler for clicks on remove button
     removeBtn.click(() => {
         deleteSelected();
+    })
+
+    layoutBtn.click(() => {
+        layout = cy.layout({
+            name: 'avsdf',
+            animate: "end",
+            animationDuration: 500,
+            animationEasing: 'ease-in-out',
+            nodeSeparation: 180
+        });
+        layout.run();
     })
 
     // handler for keyup events on delete and backspace

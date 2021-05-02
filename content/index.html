@@ -29,6 +29,7 @@
                         <button id="remove-btn">Remove</button>
                         <button id="destroy-btn">Destroy</button>
                         <button id="rank-btn">Rank</button>
+                        <button id="layout-btn">Layout</button>
                     </li>
                 </ul>
             </nav>
@@ -40,7 +41,18 @@
 
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.2/cytoscape.min.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.2/cytoscape.min.js"></script>-->
+
+<script src="https://unpkg.com/cytoscape/dist/cytoscape.min.js"></script>
+
+<!--polyfills are needed for this extension for old browsers like IE -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.5.7/shim.min.js"></script>
+
+<script src="https://unpkg.com/layout-base/layout-base.js"></script>
+<script src="https://unpkg.com/avsdf-base/avsdf-base.js"></script>
+
+<script src="https://ivis-at-bilkent.github.io/cytoscape.js-avsdf/cytoscape-avsdf.js"></script>
+
 <script type="text/javascript" src="index.js"></script>
 
 </html>
