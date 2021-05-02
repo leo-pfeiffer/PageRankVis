@@ -117,3 +117,8 @@ html, body {
 #cy {
     flex: 1;
 }
+
+.modal {
+    min-width: 75%;
+    line-height: 2;
+}
