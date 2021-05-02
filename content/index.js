@@ -67,13 +67,7 @@ window.onload = () => {
     let ranking = null;
 
     // initialise layout
-    let layout = cy.layout({
-        name: 'avsdf',
-        animate: "end",
-        animationDuration: 500,
-        animationEasing: 'ease-in-out',
-        nodeSeparation: 180
-    });
+    let layout;
 
     /**
      * Delete the currently selected elements of the cytoscape.
@@ -108,6 +102,20 @@ window.onload = () => {
         });
     }
 
+    /**
+     * Run the avsdf layout.
+     * */
+    const runLayout = function() {
+        layout = cy.layout({
+            name: 'avsdf',
+            animate: "end",
+            animationDuration: 500,
+            animationEasing: 'ease-in-out',
+            nodeSeparation: 180
+        });
+        layout.run();
+    }
+
     // Get the buttons
     const addNodeBtn = $('#add-node-btn')
     const removeBtn = $('#remove-btn')
@@ -122,7 +130,7 @@ window.onload = () => {
             data: {id: '' + lastAdded, name: ''+ lastAdded, height: 25, width: 25},
             position: { x: (100 + lastAdded * 90 % 400), y: 100 }
         });
-        await layout.run();
+        await runLayout();
         lastAdded++;
     })
 
@@ -171,7 +179,7 @@ window.onload = () => {
 
     // handler for clicks on the layout button
     layoutBtn.click(async () => {
-        await layout.run();
+        await runLayout();
     })
 
     // handler for keyup events on delete and backspace
