@@ -119,6 +119,7 @@ html, body {
 }
 
 .modal {
+    margin-top: 75px;
     min-width: 75%;
     line-height: 2;
 }
