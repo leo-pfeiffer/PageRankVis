@@ -3,8 +3,19 @@ html {
     font-family: "Garamond", serif;
 }
 
+body {
+    min-width:1000px;
+    width: auto !important;
+}
+
 html, body {
     height: 100%;
+}
+
+.vl {
+    border-left: 2px solid white;
+    margin-right: 10px;
+    margin-left: 5px;
 }
 
 .hero {
@@ -14,11 +25,12 @@ html, body {
     right: 0;
     top: 0;
     bottom: 0;
-    width: 15em;
+    width: 86px;
     border-left: 1px solid #000000;
     z-index: 2;
     overflow: auto;
-    background: #ffffff;
+    background: #000000;
+    color: #ffffff;
 }
 
 .hero nav {
@@ -27,9 +39,8 @@ html, body {
     left: 0;
     height: 100%;
     width: 100%;
-    color: #000000;
     font-family: "Garamond", serif;
-    font-size: 1em;
+    font-size: 36px;
     display: block;
 }
 .hero nav ul {
@@ -43,7 +54,20 @@ html, body {
 }
 .hero nav a {
     text-decoration: none;
-    color: #000000;
+    color: #ffffff;
+}
+
+.hero hr {
+    display: block;
+}
+
+.hero .vl {
+    display: none;
+}
+
+.hero i {
+    margin: 20px 0 20px 0;
+    cursor: pointer;
 }
 
 .content {
@@ -51,7 +75,7 @@ html, body {
     left: 0;
     top: 0;
     bottom: 0;
-    right: 15em;
+    right: 86px;
     z-index: 1;
     display: flex;
 }
@@ -60,16 +84,38 @@ html, body {
 @media (max-width: 45em) {
 
     .hero {
-        height: 15em;
+        height: 50px;
         width: 100%;
         border-left: none;
         border-bottom: 1px solid #000000;
+        white-space: nowrap;
     }
 
     .content {
         left: 0;
-        top: 15em;
+        top: 50px;
         right: 0;
+    }
+
+    .hero hr {
+        display: none;
+    }
+
+    .hero .vl {
+        display: inline;
+    }
+
+    .hero i {
+        margin: 0 10px 0 10px;
+    }
+
+    .hero nav {
+        font-size: 20px;
+    }
+
+    .hero nav li {
+        margin: 15px 0;
+        position: relative;
     }
 }
 
