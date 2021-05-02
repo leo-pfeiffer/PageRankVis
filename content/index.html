@@ -6,7 +6,7 @@
     <link rel="shortcut icon" type="image/ico" href="favicon.ico"/>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 </head>
 <body>
     <header>
@@ -20,10 +20,10 @@
                         <div class="vl"></div>
                         <i id="add-node-btn" class="fas fa-plus" title="Add node"></i>
                         <i id="remove-btn" class="fas fa-times" title="Remove selected node"></i>
-                        <i id="destroy-btn" class="fas fa-sync" title="Start over"></i>
-                        <i id="rank-btn" class="fas fa-play" title="Run PageRank"></i>
                         <i id="layout-btn" class="fas fa-project-diagram" title="Run layout"></i>
-                        <i id="question-btn" class="fas fa-question" title="Help"></i>
+                        <i id="rank-btn" class="fas fa-play" title="Run PageRank"></i>
+                        <i id="destroy-btn" class="fas fa-sync" title="Start over"></i>
+                        <a href="#help-modal" rel="modal:open"><i id="question-btn" class="fas fa-question" title="Help"></i></a>
                     </li>
                 </ul>
             </nav>
@@ -32,10 +32,23 @@
     <section class="content">
         <div id="cy"></div>
     </section>
-
 </body>
+
+<div id="help-modal" class="modal">
+    <div>
+        <ul>
+            <li>Add nodes by clicking the  <i class="fas fa-plus"></i>.</li>
+            <li>Add edges betweem two nodes by clicking on them.</li>
+            <li>Remove nodes  by clicking the  <i class="fas fa-times"></i>.</li>
+            <li>Generate a nicer layout by clicking  <i class="fas fa-project-diagram"></i>.</li>
+            <li>Run PageRank by clicking  <i class="fas fa-play"></i></li>
+            <li>Start over by clicking  <i class="fas fa-sync"></i></li>
+        </ul>
+    </div>
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.18.2/cytoscape.min.js"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 
 <script src="https://unpkg.com/cytoscape/dist/cytoscape.min.js"></script>
 

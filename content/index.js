@@ -11,8 +11,8 @@ window.onload = () => {
             {
                 selector: 'node',
                 style: {
-                    'background-color': 'green',
-                    'border-color': 'white',
+                    'background-color': '#1A536A',
+                    'border-color': '#3DCA7B',
                     'border-width': '2',
                     'label': 'data(id)',
                     'width': 'data(width)',
@@ -33,7 +33,6 @@ window.onload = () => {
                 selector: ':selected',
                 style: {
                     'line-color': 'red',
-                    'border-color': 'red',
                     'target-arrow-color': 'red',
                     'source-arrow-color': 'red'
                 }
